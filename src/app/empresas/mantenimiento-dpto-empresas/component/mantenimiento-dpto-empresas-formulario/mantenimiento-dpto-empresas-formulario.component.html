@@ -1,0 +1,45 @@
+
+<div style="text-align:center">
+    <button mat-raised-button color="secondary" (click)="returnToView()">Home</button>
+    
+    <h1 style="margin-top: 3%"> Registrar Departamento</h1>
+    <h2>Empresa Seleccionada: {{empresasList[selEmp].name}}<br> 
+        Sucursal Seleccionada: {{empresasList[selEmp].sucursales[selSuc].name}}
+   </h2>
+    <h3> Datos Básicos </h3>
+    <br>
+    <form (ngSubmit)="onSubmit()" [formGroup]="empFormGroup">
+          <mat-form-field class="empInputField">
+              <mat-label>Nombre del Departamento</mat-label>
+              <input type="text" name="rifinput" matInput formControlName='name'  >
+            </mat-form-field>
+            <br>
+            <mat-form-field class="empInputField wide">
+              <mat-label>Descripción del Departamento</mat-label>
+              <textarea rows="5" name="rifinput" matInput formControlName='desc'  ></textarea>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="empInputField">
+              <mat-label>Extensión Telefónica</mat-label>
+              <input type="text" name="nitinput" matInput formControlName='tlfext'  >
+            </mat-form-field>
+         
+            <mat-form-field class="empInputField">
+              <mat-label>Ubicación</mat-label>
+              <input type="text" name="pcodeinput" matInput formControlName='location'  >
+            </mat-form-field>
+            
+            <mat-form-field class="empInputField">
+              <mat-label>Correo Electrónico</mat-label>
+              <input type="text" name="pcodeinput" matInput formControlName='email'  >
+            </mat-form-field>
+        
+  
+      <br>
+  
+      <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="!empresasService.modifyAux"[disabled]="empFormGroup.invalid || noDataSelected">Registrar</button>
+      <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="empresasService.modifyAux"[disabled]="empFormGroup.invalid">Guardar</button>
+  
+    </form>
+  </div>
+  

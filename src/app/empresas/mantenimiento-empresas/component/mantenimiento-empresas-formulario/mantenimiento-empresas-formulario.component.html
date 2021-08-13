@@ -1,0 +1,156 @@
+
+<div style="text-align:center">
+  <button mat-raised-button color="secondary" (click)="returnToView()">Home</button>
+  
+  <h1 style="margin-top: 3%"> Registrar Empresa</h1>
+
+  <h3> Datos Básicos </h3>
+  <form (ngSubmit)="onSubmit()" [formGroup]="empFormGroup">
+    
+          <mat-form-field class="empInputField">
+            <mat-label>RIF</mat-label>
+            <input type="text" name="rifinput" matInput formControlName='RIF'  >
+          </mat-form-field>
+       
+          <mat-form-field class="empInputField">
+            <mat-label>NIT</mat-label>
+            <input type="text" name="nitinput" matInput formControlName='NIT'  >
+          </mat-form-field>
+       
+          <mat-form-field class="empInputField">
+            <mat-label>Código Público</mat-label>
+            <input type="text" name="pcodeinput" matInput formControlName='pCode'  >
+          </mat-form-field>
+      
+
+    <br>
+    <br>
+    <br>
+
+   
+    <mat-form-field class="empInputField wide">
+      <mat-label>Razón Social</mat-label>
+      <input type="text" name="nameinput" matInput formControlName='name'  >
+     
+    </mat-form-field>
+ 
+
+    <br><br>
+   
+    <h3>Ubicación</h3>
+  
+    <mat-form-field class="empInputField">
+      <mat-label>Ciudad</mat-label>
+      <input type="text" name="cityinput" matInput formControlName="ciudad"  >
+     
+    </mat-form-field>
+    
+    <mat-form-field class="empInputField">
+      <mat-label>Municipio</mat-label>
+      <input type="text" name="mcpltyinput" matInput formControlName="municipio"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Zona</mat-label>
+      <input type="text" name="zoneinput" matInput formControlName="zona"  >
+     
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="empInputField wide">
+      <mat-label>Dirección Sede</mat-label>
+      <input type="text" name="dirsedeinput" matInput formControlName="dirsede"  >
+     
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Nro. Edificio</mat-label>
+      <input type="text" name="bldnginput" matInput formControlName="nroedif"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Piso</mat-label>
+      <input type="text" name="flrinput" matInput formControlName="piso"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Apto.</mat-label>
+      <input type="text" name="aptinput" matInput formControlName="apto"  >
+     
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Calle</mat-label>
+      <input type="text" name="streetinput" matInput formControlName="calle"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Sector</mat-label>
+      <input type="text" name="sectorinput" matInput formControlName="sector"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Cod. Postal</mat-label>
+      <input type="text" name="zipcodeinput" matInput formControlName="postal"  >
+     
+    </mat-form-field>
+    <br><br>
+    <h3> Contacto </h3>
+
+    <mat-form-field class="empInputField phone" >
+      <mat-label>Teléfonos</mat-label>
+      <input type="text" name="tlfinput" matInput formControlName="tlf"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Fax</mat-label>
+      <input type="text" name="faxinput" matInput formControlName="fax"  >
+     
+    </mat-form-field>
+    <br>
+    <mat-form-field class="empInputField">
+      <mat-label>Correo Empresa</mat-label>
+      <input type="text" name="email1input" matInput formControlName="email1"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Correo Directivo</mat-label>
+      <input type="text" name="email2input" matInput formControlName="email2"  >
+     
+    </mat-form-field>
+
+    <mat-form-field class="empInputField">
+      <mat-label>Página Web</mat-label>
+      <input type="text" name="websiteinput" matInput formControlName="website"  >
+     
+    </mat-form-field>
+    <br>
+
+    <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="!empresasService.modifyAux"[disabled]="empFormGroup.invalid">Registrar</button>
+    <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="empresasService.modifyAux"[disabled]="empFormGroup.invalid">Guardar</button>
+
+  </form>
+</div>
+
+<!---
+    ciudad: string;
+    municipio: string;
+    zona: string;  
+    nroedif: string;
+    piso: string;
+    apto: string;
+    calle: string;
+    sector: string;
+  -->

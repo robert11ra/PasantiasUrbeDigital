@@ -1,0 +1,45 @@
+
+
+
+.container{
+    width: 40%;
+    height: auto;
+    background: rgba(240,240,240,255);
+    padding: 20px;
+    margin: auto;
+    margin-top: 15% !important; 
+    justify-content: center;
+    border: 1px solid #000;
+    box-shadow: 7px 8px 20px 1px;
+    border-radius: 5px;
+  }
+  
+  .container h4{
+    font-weight: bold;
+  }
+  
+  
+  .selects{
+    width: 65%;
+    margin: auto;
+    height: auto;
+  }
+  
+    
+    .select, .select2{
+      text-align: right;
+    }
+    
+    mat-form-field{
+      width: 250px;
+    }
+    
+    .selects h4{
+      display: inline-flex;
+      margin-right: 10px;
+    }
+  
+  .button{
+    width: 100%;
+    text-align: center;
+  }

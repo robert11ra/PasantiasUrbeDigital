@@ -1,0 +1,31 @@
+
+<div style="text-align:center">
+  <button mat-raised-button color="secondary" (click)="returnToView()">Home</button>
+  
+  <h1 style="margin-top: 3%"> Registrar Estado</h1>
+  <br>
+  <form (ngSubmit)="onSubmit()" [formGroup]="edoFormGroup">
+        <mat-form-field class="empInputField">
+            <mat-label>Estado</mat-label>
+            <input type="text" name="nameinput" matInput formControlName='name'  >
+          </mat-form-field>
+    
+          <mat-form-field class="empInputField">
+            <mat-label>País</mat-label>
+            <input type="text" name="countryinput" matInput formControlName='country'  >
+          </mat-form-field>
+       
+          <mat-form-field class="empInputField">
+            <mat-label>Cod. Ent. Fed.</mat-label>
+            <input type="text" name="feCodeinput" matInput formControlName='feCode'  >
+          </mat-form-field>
+         
+      
+
+    <br>
+
+    <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="!csjFormService.modifyAux" [disabled]="edoFormGroup.invalid">Registrar</button>
+    <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="csjFormService.modifyAux" [disabled]="edoFormGroup.invalid">Guardar</button>
+
+  </form>
+</div>

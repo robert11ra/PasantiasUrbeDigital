@@ -1,0 +1,25 @@
+<div style="text-align: center;">
+  <button mat-raised-button color="secondary" (click)="goBack()">Regresar</button>
+</div>
+
+   <div style="justify-content: center;margin-left:27.5%;margin-top:5%;margin-bottom:5%;text-align:center"> 
+
+        <form style="width:62.5%">
+          <mat-form-field>
+            <mat-label>Añadir Registro</mat-label>
+            <input type="text" name="addcsjinput" matInput [(ngModel)]="addcsjinput" [formControl]="nameFormControl">
+            <mat-error *ngIf="nameFormControl.hasError('required')">
+              El nombre no puede estar vacío.
+            </mat-error>
+            <mat-hint class="mat-error" *ngIf="!validateName(addcsjinput)" style="color:red">El nombre está vacío, o contiene solamente espacios.</mat-hint>
+  
+          </mat-form-field>
+          <br>
+          <br>
+          <button mat-raised-button color="primary" name="addcsjinput" *ngIf="validateName(addcsjinput)" (click)="addRegister(addcsjinput)" style="margin-right:1%">Aceptar</button>
+          <button mat-raised-button disabled *ngIf="!validateName(addcsjinput)" style="margin-right:1%" > Aceptar </button>        
+          <button mat-raised-button color="secondary" (click)="addcsjinput = ' '" style="margin-left:1%">Cancelar</button>
+          </form>
+
+              
+  </div>

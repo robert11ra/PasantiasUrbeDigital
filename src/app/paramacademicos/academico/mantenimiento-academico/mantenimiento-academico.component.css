@@ -1,0 +1,39 @@
+table {
+    width: 100%;
+}
+table th{
+  text-align: center;
+  font-weight: bold;
+}
+.tabla{
+  width: 85%;
+  margin: auto;
+  height: auto;
+  margin-top: 50px;
+}
+
+.filtro{
+  margin-top: 10px;
+  width: auto;
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.filtro h4{
+  margin-right: 10px;
+}
+
+.buttons{
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.buttons button{
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+mat-form-field{
+  width: 300px;
+}

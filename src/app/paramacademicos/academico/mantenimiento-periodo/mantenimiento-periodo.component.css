@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+}
+.tabla{
+  width: 85%;
+  margin: auto;
+  height: auto;
+}
+
+.filtro{
+  margin-top: 10px;
+  width: auto;
+  display: inline-flex;
+  align-items: flex-end;
+  padding-left: 35%;
+}
+
+.filtro h4{
+  margin-right: 10px;
+}

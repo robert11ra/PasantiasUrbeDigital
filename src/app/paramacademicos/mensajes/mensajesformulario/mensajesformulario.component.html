@@ -1,0 +1,140 @@
+<div style="text-align:center">
+  <button mat-raised-button color="secondary" (click)="returnToView()">Home</button>
+
+  <h1 style="margin-top: 3%">Mensajes</h1>
+
+  <form>
+    <mat-form-field class="empInputField">
+      <mat-label>Tipo de Mensaje</mat-label>
+      <mat-select [(value)]="selType" style="margin-top: 5%">
+        <mat-option *ngFor="let aux of this.msgList" [value]="aux" (click)="msgClassList = this.msgList[aux.id].clasificaciones; checkMsgList()">{{aux.nombre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br><br>
+    <mat-form-field class="empInputField" *ngIf="selType">
+      <mat-label>Clasificación de Mensaje</mat-label>
+      <mat-select [(value)]="selMsg" style="margin-top: 5%">
+        <mat-option [value]="undefined" (click)="modifyAux = false; ngOnInit()">Nuevo mensaje...</mat-option> 
+        <mat-option *ngFor="let aux of this.msgClassList" [value]="aux" (click)="modifyAux = true; ngOnInit()">{{aux.clasif}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <h3>Datos del Mensaje</h3>
+  <br>
+  <form (ngSubmit)="onSubmit()" [formGroup]="empFormGroup">
+    <mat-form-field class="empInputField">
+      <mat-label>Tipo de Mensaje</mat-label>
+      <mat-select [(value)]="formTipoSel" id="TipoMsgSelect" style="margin-top: 5%" formControlName='tipo'>
+        <mat-option *ngFor="let aux of this.msgList" [value]="aux">{{aux.nombre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="empInputField">
+      <mat-label>Clasificación</mat-label>
+      <input type="text" name="clasifinput" matInput formControlName='clasif'>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="empInputField wide">
+      <mat-label>Descripción</mat-label>
+      <textarea rows="5" name="descinput" matInput formControlName='desc'></textarea>
+    </mat-form-field>
+    <br>
+    
+    <mat-form-field style="width: 30%">
+      <mat-label>Tipo de Bloqueo</mat-label>
+      <mat-select id="NivBloqSelect" [(value)]="formTipoBloq" style="margin-top: 5%" formControlName='nivelbloq'>
+        <mat-option *ngFor="let aux of this.tipoBloqList" [value]="aux">{{aux.descripcion}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br><br>
+    <table style="margin-left: 35%; text-align:right" cellspacing="10">
+      <tr>
+        <td>
+          <mat-label>Notificar:</mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='notificar' class="leftRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        </td>
+        <td>
+          <mat-label>Mostrar: </mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='mostrar' class="rightRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-label>Mostrar Web:</mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='mostrarweb' class="leftRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        </td>
+        <td>
+          <mat-label>Envío Correo:</mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='enviocorreo' class="rightRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-label>Confidencial:</mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='confidencial' class="leftRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        </td>
+        <td>
+          <mat-label>Firma Consejo:</mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='firmaconsejo' class="rightRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        <td>
+      </tr>
+      <tr>
+        <td>
+          <mat-label>Conlleva Sanción:</mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='sancionable' class="leftRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        </td>
+        <td>
+          <mat-label>Mostrar Exp.</mat-label>
+        </td>
+        <td>
+          <mat-radio-group formControlName='mostexp' class="rightRadioOption">
+            <mat-radio-button [value]=true>SI</mat-radio-button>
+            <mat-radio-button [value]=false checked>NO</mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+    </table>
+
+    <button type="submit" mat-raised-button color="primary" class="empInputField" *ngIf="!modifyAux"
+      [disabled]="empFormGroup.invalid || noDataSelected">Registrar</button>
+    <button type="submit" mat-raised-button color="primary" class="empInputField" *ngIf="modifyAux"
+      [disabled]="empFormGroup.invalid">Guardar</button>
+
+  </form>
+</div>

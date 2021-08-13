@@ -1,0 +1,37 @@
+INSTITUCIÓN, propiedades:
+Nombre
+Tipos de estudio [Nombre, Aplica Período? (S/N), Tipo de Horario, Denominación, Genera Nómina? (S/N), Última Ficha, Nombre Contenido]
+
+Tipo de Período, al añadir/modificar un período, permite seleccionar la duración (trimestral, semestral, etc)
+
+PERÍODO, propiedades:
+Nombre (Mes inicio-Año inicio/Mes final-Año final), Tipo (Normal o Intensivo; no tiene relación con Tipo de Período definido anteriormente?), Fecha inicio, Fecha fin, Ini. Contraloría, Fin. Contraloría, Tipo de Período (Repetido? Sí tiene que ver con Tipo de Período anterior...), Orden (id), PERSEM (código?), Abreviatura, Semanas, Ficha, Color (qué se hace con el color seleccionado?), Estado
+
+
+Mantenimiento de Plantillas - Documentos: Al seleccionar un documento, indica qué documentos se necesitan para llenar ese documento?
+Mantenimiento de Plantillas - Estudio: Se selecciona la carrera, luego el documento, y esto redirige a la página anterior?
+
+
+Calendario Académico: CRUD pide período y tipo de estudio, una vez captada esa data permite crear modificar y eliminar calendarios.
+
+CALENDARIO ACAD, propiedades: Semana, Inicio, Fin, Feriados, % Acum. Falta ejemplo de cómo se ve un calendario generado por la aplicación 
+
+Calendario actividades académicas: Es un modal distinto al Calendario Académico o es el mismo? Tienen alguna relación? Falta ejemplo de cómo se ve un calendario generado por la aplicación (se listan todas las semanas del período? Qué información va en "Proceso"?)
+
+CALENDARIO ACT. ACAD, propiedades: Semana, Fechas Inicio y Fin, Proceso, Observaciones. 
+
+
+CONSTANCIAS, propiedades: Código (id), Autoridad (nombre de la autoridad universitaria que emite la constancia), nombre de la constancia, paga? (S/N), nombre de DW (código dw_texto...), imprime sobre? (S/N), aplica datos? (S/N), Máximo-Id (número? Qué significa?), Imprime notas? (ceros y unos, es un True/False?)
+
+Lista de Mensajes Expediente: ¿Qué hace exactamente? Permite visualizar registros? Cómo funciona la carga de imagen? Qué debe hacer con esa imagen? 
+
+Mantenimiento de Mensajes: ¿Qué hace? Administrar los tipos de mensaje que se muestran en el sistema? En ese caso se define tipo
+
+MENSAJE, propiedades: Tipo (Info sistema, Disciplinario, Informativo o Retiro de Bloqueo? Solo Disciplinario o Informativo? Especificar), Clasificación (depende del tipo), Descripción (describir el mensaje), Nivel de bloqueo, Notificar? (S/N), Mostrar Web? (S/N), Confidencial? (S/N), Conlleva Sanción? (S/N), Mostrar? (S/N), Envió Correo? (S/N), Firma Consejo? (S/N), Mostrar Exp.? (S/N)
+
+Lista de tipos de bloqueo: Administrar los tipos de bloqueo
+
+BLOQUEO, propiedades: Id, Descripción
+
+
+ 

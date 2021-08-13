@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+}
+
+.tabla{
+  width: 85%;
+  margin: auto;
+  height: 600px;
+  padding-top: 50px;
+  overflow-x: scroll;
+}
+
+.tabla th{
+  width: 250px;
+  min-width: 250px;
+}
+
+.selects{
+  display: inline-flex;
+  width: 100%;
+  margin: auto;
+}
+
+.select{
+  text-align: right;
+}
+
+
+.selects h4{
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+.buttons{
+  width: 100%;
+  
+  justify-content: space-between;
+}
+
+.buttons button{
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.select mat-form-field{
+  width: 300px;
+}

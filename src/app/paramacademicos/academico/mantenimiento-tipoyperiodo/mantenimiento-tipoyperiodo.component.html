@@ -1,0 +1,30 @@
+<div class="container">
+    <h4>Seleccione Tipo de Estudio y Período</h4>
+    <div class="selects">
+    <div class="select">
+      <h4>Tipo de Estudio:</h4>
+      <mat-form-field>
+        <mat-label>Seleccione</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let busca of buscar" [value]="busca.value">
+            {{busca.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="select2">
+      <h4>Período:</h4>
+      <mat-form-field>
+        <mat-label>Seleccione</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let periodo of periodos" [value]="periodo.valor">
+            {{periodo.verValor}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="button">
+      <button mat-raised-button color="primary">Aceptar</button>
+  </div>
+</div>

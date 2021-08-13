@@ -1,0 +1,121 @@
+<div style="justify-content: center;margin-left:27.5%;margin-top:5%;margin-bottom:5%;text-align:center">
+  <form style="width:62.5%">
+    <div *ngIf="isLargeScreen">
+
+      <div>
+        <mat-form-field style="text-align:left;float:left">
+          <mat-label>Buscar por:</mat-label>
+          <mat-select [(value)]="filterType">
+            <mat-option value="none">Todos</mat-option>
+            <mat-option value="name">Estado</mat-option>
+            <mat-option value="country">Pais</mat-option>
+            <mat-option value="code">Código</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <mat-form-field style="text-align:left;float:left">
+          <mat-label>Buscar...</mat-label>
+          <input matInput (keyup)="applyFilter($event, filterType)" #input>
+        </mat-form-field>
+      </div>
+
+      <div style="width:60%;float:right;text-align:right">
+        <button mat-raised-button color="primary" name="deleteedo" (click)="toggleDeleteButtons()"
+          style="background-color:red;margin-right:1%">Eliminar</button>
+        <button mat-raised-button color="primary" name="editedo" (click)="toggleEditButtons()"
+          style="margin-left:1%;margin-right:1%">Editar</button>
+          <button mat-raised-button color="secondary" name="addedo" (click)="register()" style="margin-left:1%">Agregar</button>
+
+      </div>
+
+    </div>
+
+    <div *ngIf="!isLargeScreen">
+
+
+      <div>
+        <mat-form-field>
+          <mat-label>Buscar por:</mat-label>
+          <mat-select [(value)]="filterType">
+            <mat-option value="name">Estado</mat-option>
+            <mat-option value="country">Pais</mat-option>
+            <mat-option value="code">Código</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-form-field>
+          <mat-label>Buscar...</mat-label>
+          <input matInput (keyup)="applyFilter($event, filterType)" #input>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary" name="deleteedo" (click)="toggleDeleteButtons()"
+          style="background-color:red;margin-right:1%">Eliminar</button>
+        <button mat-raised-button color="primary" name="editedo" (click)="toggleEditButtons()"
+          style="margin-left:1%; margin-right:1%">Editar</button>
+        <button mat-raised-button color="secondary" name="addedo" (click)="register()" style="margin-left:1%">Agregar</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+<br>
+
+<div style="text-align:center;margin-top:7%">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"
+    style="width:75%;margin-left:12.5%; margin-right:12.5%;">
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Estado </th>
+      <td mat-cell *matCellDef="let edo" style="text-align:center;">
+        {{edo.name}}
+        <br>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pais">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center;"> País </th>
+      <td mat-cell *matCellDef="let edo" style="text-align:center;">
+        {{edo.country}}
+        <br>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecode">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Código </th>
+      <td mat-cell *matCellDef="let edo" style="text-align:center;">
+        {{edo.fedEntCode}}
+
+        <br>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center;padding-right:0px"></th>
+      <td mat-cell *matCellDef="let edo" style="text-align:center;padding-right:0px">
+        <button mat-raised-button color="primary" name="deleteedo" (click)="removeRegister(edo)"
+          style="background-color:red">Eliminar</button>
+        <br>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="modificar">
+      <th mat-header-cell *matHeaderCellDef style="text-align:center;padding-right:0px"></th>
+      <td mat-cell *matCellDef="let edo" style="text-align:center;padding-right:0px">
+
+        <button mat-raised-button color="primary" name="modifyedo"
+          (click)="navigateModify(edo.id)">Editar</button>
+
+        <br>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [ngStyle]="{display: isLargeScreen ? 'block': 'none'}" [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons style="width:75%;margin-left:12.5%; margin-right:12.5%"></mat-paginator>

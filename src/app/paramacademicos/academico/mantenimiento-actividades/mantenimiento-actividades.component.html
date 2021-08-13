@@ -1,0 +1,62 @@
+<div class="tabla">
+    <div class="selects">
+      <div class="select">
+        <h4>Tipo de Estudio:</h4>
+        <mat-form-field>
+          <mat-label>Seleccione</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let busca of buscar" [value]="busca.value">
+              {{busca.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="select2">
+        <h4>Período:</h4>
+        <mat-form-field>
+          <mat-label>Seleccione</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let periodo of periodos" [value]="periodo.valor">
+              {{periodo.verValor}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  
+  
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="semana">
+        <th mat-header-cell *matHeaderCellDef> Semana </th>
+        <td mat-cell *matCellDef="let element"> {{element.semana}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fechas de Inicio y Fin </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="pro">
+        <th mat-header-cell *matHeaderCellDef> Proceso </th>
+        <td mat-cell *matCellDef="let element"> {{element.pro}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="obs">
+        <th mat-header-cell *matHeaderCellDef> Observaciones </th>
+        <td mat-cell *matCellDef="let element"> {{element.obs}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+  
+  </div>
+  

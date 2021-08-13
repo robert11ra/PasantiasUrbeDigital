@@ -1,0 +1,88 @@
+<div style="justify-content: center;margin-left:27.5%;margin-top:5%;margin-bottom:5%;text-align:center"> 
+      <form style="width:62.5%">
+        <div *ngIf="isLargeScreen">
+
+        <div>
+          <mat-form-field style="text-align:left;float:left">
+            <mat-label>Buscar...</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+            
+          </mat-form-field>
+        </div>
+
+        <div style="width:60%;float:right;text-align:right">
+          <button mat-raised-button color="primary" name="deletecsj" (click)="toggleDeleteButtons()" style="background-color:red;margin-right:1%">Eliminar</button>
+           <button mat-raised-button color="primary" name="editcsj" (click)="toggleEditButtons()" style="margin-left:1%">Editar</button>
+           <button mat-raised-button color="secondary" name="editcsj" (click)="formNavigate()" style="margin-left:1%">Agregar</button>
+          </div>
+
+        </div>
+
+        <div *ngIf="!isLargeScreen">
+         
+
+          <div>
+            <mat-form-field>
+              <mat-label>Buscar...</mat-label>
+              <input matInput (keyup)="applyFilter($event)" #input>
+              
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-raised-button color="primary" name="deletecsj" (click)="toggleDeleteButtons()" style="background-color:red;margin-right:1%">Eliminar</button>
+             <button mat-raised-button color="primary" name="editcsj" (click)="toggleEditButtons()" style="margin-left:1%">Editar</button>
+             <button mat-raised-button color="secondary" name="editcsj" (click)="formNavigate()" style="margin-left:1%">Agregar</button>
+          </div>
+
+          </div>
+    </form>
+    </div>
+    <br>
+
+    <div style="text-align:center;margin-top:7%">
+      <table mat-table id="csjTable" [dataSource]="dataSource" class="mat-elevation-z8" style="width:45%;margin-left:27.5%; margin-right:27.5%;">
+   
+          <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef  style="text-align:center;"> Nombre </th>
+              <td mat-cell *matCellDef="let csj" style="text-align:center;"> 
+                  {{csj.name}}
+                  <div *ngIf="csjModifyButtons && csjSeleccionado == csj">
+                    <form>
+                     <mat-form-field>
+                      <mat-label>Nuevo nombre...</mat-label>
+                     <input type="text" name="modifycsjinput" matInput [(ngModel)]="csjModifAux" [formControl]="nameFormControl">
+                     <mat-error *ngIf="nameFormControl.hasError('required')">
+                      El nombre no puede estar vacío.
+                     </mat-error>
+                     </mat-form-field>
+                     <button mat-raised-button color="primary" *ngIf="validateName(csjModifAux)" (click)="csjModify(csjModifAux, csj.id)" style="margin-right:10px">Aceptar</button>
+                     <button mat-raised-button disabled *ngIf="!validateName(csjModifAux)" style="margin-right:10px" > Aceptar </button>
+                   </form>
+                </div>
+                
+                 <br>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="eliminar" >
+              <th mat-header-cell *matHeaderCellDef  style="text-align:center;padding-right:0px"></th>
+              <td mat-cell *matCellDef="let csj" style="text-align:center;padding-right:0px"> 
+                <button mat-raised-button color="primary" name="deletecsj" (click)="removeRegister(csj)" style="background-color:red">Eliminar</button>
+                      <br>
+              </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="modificar" >
+              <th mat-header-cell *matHeaderCellDef  style="text-align:center;padding-right:0px"></th>
+              <td mat-cell *matCellDef="let csj" style="text-align:center;padding-right:0px"> 
+                <button mat-raised-button color="primary" name="modifycsj" (click)="csjSeleccionado = csj; toggleEditButtonSpecific();">Editar</button>
+                      <br>
+              </td>
+            </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [ngStyle]="{display: isLargeScreen ? 'block': 'none'}" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons style="width:45%;margin-left:27.5%; margin-right:27.5%"></mat-paginator>
+  

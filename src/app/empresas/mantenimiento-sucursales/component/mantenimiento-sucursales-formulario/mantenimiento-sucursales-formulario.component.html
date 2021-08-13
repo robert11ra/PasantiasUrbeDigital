@@ -1,0 +1,105 @@
+
+<div style="text-align:center">
+    <button mat-raised-button color="secondary" (click)="returnToView()">Home</button>
+    
+    <h1 style="margin-top: 3%"> Registrar Sucursal</h1>
+    <h2>Empresa Seleccionada: {{empresasList[selEmp].name}}</h2>
+    <h3> Datos Básicos </h3>
+    <br>
+    <form (ngSubmit)="onSubmit()" [formGroup]="empFormGroup">
+          <mat-form-field class="empInputField">
+              <mat-label>Nombre</mat-label>
+              <input type="text" name="nameinput" matInput formControlName='name'  >
+            </mat-form-field>
+            
+            <mat-form-field class="empInputField wide">
+              <mat-label>Teléfono</mat-label>
+              <input type="text" name="tlfinput" matInput formControlName='tlf'>  
+            </mat-form-field>
+            <mat-form-field class="empInputField">
+              <mat-label>Fax</mat-label>
+              <input type="text" name="faxinput" matInput formControlName='fax'  >
+            </mat-form-field>
+         
+            <mat-form-field class="empInputField">
+              <mat-label>Estado</mat-label>
+              <mat-select  formControlName='status'>
+                <mat-option value="ACTIVA">ACTIVA</mat-option>
+                <mat-option value="INACTIVA">INACTIVA</mat-option>
+               
+              </mat-select>
+            </mat-form-field>
+
+            <h3>Ubicación</h3>
+  
+            <mat-form-field class="empInputField">
+              <mat-label>Ciudad</mat-label>
+              <input type="text" name="cityinput" matInput formControlName="ciudad"  >
+             
+            </mat-form-field>
+            
+            <mat-form-field class="empInputField">
+              <mat-label>Municipio</mat-label>
+              <input type="text" name="mcpltyinput" matInput formControlName="municipio"  >
+             
+            </mat-form-field>
+        
+            <mat-form-field class="empInputField">
+              <mat-label>Zona</mat-label>
+              <input type="text" name="zoneinput" matInput formControlName="zona"  >
+             
+            </mat-form-field>
+        
+            <br>
+        
+        
+            <mat-form-field class="empInputField">
+              <mat-label>Nro. Edificio</mat-label>
+              <input type="text" name="bldnginput" matInput formControlName="nroedif"  >
+             
+            </mat-form-field>
+        
+            <mat-form-field class="empInputField">
+              <mat-label>Piso</mat-label>
+              <input type="text" name="flrinput" matInput formControlName="piso"  >
+             
+            </mat-form-field>
+        
+            <mat-form-field class="empInputField">
+              <mat-label>Apto.</mat-label>
+              <input type="text" name="aptinput" matInput formControlName="apto"  >
+             
+            </mat-form-field>
+        
+            <br>
+        
+            <mat-form-field class="empInputField">
+              <mat-label>Calle</mat-label>
+              <input type="text" name="streetinput" matInput formControlName="calle"  >
+             
+            </mat-form-field>
+        
+            <mat-form-field class="empInputField">
+              <mat-label>Sector</mat-label>
+              <input type="text" name="sectorinput" matInput formControlName="sector"  >
+             
+            </mat-form-field>
+            <br><br>
+
+            <mat-form-field class="empInputField">
+              <mat-label>Correo Sucursal</mat-label>
+              <input type="text" name="sucemailinput" matInput formControlName='email'>
+            </mat-form-field>
+        
+  
+      <br>
+  
+      <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="!empresasService.modifyAux"[disabled]="empFormGroup.invalid || noDataSelected">Registrar</button>
+      <button type="submit" mat-raised-button color="primary" class="empInputField"  *ngIf="empresasService.modifyAux"[disabled]="empFormGroup.invalid">Guardar</button>
+      
+    </form>
+
+    <br>
+      <button mat-raised-button color="primary" (click)="debugStatus()">STATUS CHECK</button>
+  </div>
+  

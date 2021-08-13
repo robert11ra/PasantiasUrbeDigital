@@ -1,0 +1,39 @@
+table {
+    width: 100%;
+}
+.tabla{
+  width: 85%;
+  margin: auto;
+  height: auto;
+  margin-top: 50px;
+}
+
+.selects{
+  display: inline-flex;
+  width: 100%;
+  margin: auto;
+}
+
+.select{
+  margin-right: 20%;
+}
+
+.select2 mat-form-field{
+  width: 250px;
+}
+
+.selects h4{
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+.buttons{
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.buttons button{
+  margin-left: 20px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,38 @@
+.empInputField{
+    margin-left: 4%;
+    margin-top: 10%;
+  
+
+}
+
+.empInputField.wide{
+    margin-top: 10%;
+    width: 45%;  
+}
+
+.empInputField.phone{
+    margin-top: 10%;
+    width: 28%;
+}
+
+@media (max-width: 800px) and (min-width:301px){
+    .empInputField.wide{
+        margin-top: 10%;
+        width: 60%;  
+    }
+    
+    .empInputField.phone{
+        margin-top: 10%;
+        width: 60%;
+    }
+}
+
+@media(max-width: 300px){
+    .empInputField.wide{
+        width:auto;
+    }
+    
+    .empInputField.phone{
+        width: auto;
+    }
+}
